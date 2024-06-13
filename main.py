@@ -249,8 +249,9 @@ with tab2:
         mime="text/csv",
     )
 
-    overlap_percent = calculate_overlap(st.session_state.mainDf, 'is_valid', 'spacy_response')
-    st.write(f"Overlap percent is: {overlap_percent}%")
+    if len(st.session_state.mainDf.index) != 0:
+        overlap_percent = calculate_overlap(st.session_state.mainDf, 'is_valid', 'spacy_response')
+        st.write(f"Overlap percent is: {overlap_percent}%")
 
     st.subheader("Breakdown Dataframe")
     st.dataframe(st.session_state.breakdownDf, use_container_width=True)
